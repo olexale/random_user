@@ -28,7 +28,7 @@ More complex sample
                                    nationalities: 'NO', 
                                    results: 10);
 ```
-Will return 10 females user accounts from Norway with alpha-numberical 8-symbol passwords.
+Will return 10 female user accounts from Norway with alpha-numberical 8-symbol passwords.
 
 ## License
 `random_user` is released under an [MIT License](https://opensource.org/licenses/MIT). See `LICENSE` for details.
