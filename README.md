@@ -23,7 +23,10 @@ To get just a random user use:
 More complex sample
 ```dart
   final api = RandomUser();
-  final users = await api.getUsers(gender: 'female', password: 'upper,lower,number,8', nationalities: 'NO', results: 10);
+  final users = await api.getUsers(gender: 'female', 
+                                   password: 'upper,lower,number,8', 
+                                   nationalities: 'NO', 
+                                   results: 10);
 ```
 Will return 10 females user accounts from Norway with alpha-numberical 8-symbol passwords.
 
