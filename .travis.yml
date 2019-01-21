@@ -1,16 +1,14 @@
 language: dart
-
 dart:
   - stable
-
-dart_task:
-  - test: --platform vm
-  - dartanalyzer
-
-# Only building master means that we don't run two builds for each pull request.
 branches:
   only: [master]
-
-cache:
- directories:
-   - $HOME/.pub-cache
+install:
+  - gem install coveralls-lcov
+after_success:
+  - coveralls-lcov --repo-token $COVERALLS_TOKEN coverage/lcov.info
+deploy:
+  provider: script
+  script: ./tool/publish.sh
+  on:
+    branch: master
