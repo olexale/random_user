@@ -1,6 +1,8 @@
 # random_user
 Framework to Generate Random Users - An Unofficial Dart/Flutter SDK for https://randomuser.me
 
+[![Build Status](https://travis-ci.org/olexale/random_user.svg?branch=master)](https://travis-ci.org/olexale/random_user) [![Coverage Status](https://coveralls.io/repos/github/olexale/random_user/badge.svg?branch=master)](https://coveralls.io/github/olexale/random_user?branch=master)
+
 `random_user` is an easy to use Dart framework that provides the ability to generate random users and their accompanying data for your Dart of Flutter applications. It utilizes randomuser.me API to generate the data.
 
 ## Usage
