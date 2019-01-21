@@ -11,7 +11,7 @@ import 'package:random_user/random_user.dart';
 ```
 Create an instance of `RandomUser` class and use the `getUser`, `getUsers` or `getUsersWithInfo` methods.
 `getUser` will return a randomly generated user model.
-Use `getUsers` to get a list of randomly generated users.
+Use `getUsers` to get a list of random users.
 Call `getUsersWithInfo` to get not only a list of users, but additional `Info` structure which may help with pagination.
 
 To get just a random user use:
