@@ -14,4 +14,4 @@ EOF
 pub get
 pub run test_coverage
 coveralls-lcov --repo-token $COVERALLS_TOKEN coverage/lcov.info
-pub publish -f
+# pub publish -f
