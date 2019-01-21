@@ -5,6 +5,10 @@ branches:
   only: [master]
 install:
   - gem install coveralls-lcov
-script: ./tool/publish.sh
+deploy:
+  provider: script
+  script: bash tool/publish.sh
+  on:
+    branch: master
 after_success:
   - coveralls-lcov --repo-token $COVERALLS_TOKEN coverage/lcov.info
