@@ -1,4 +1,4 @@
-# random_user  [![Build Status](https://travis-ci.org/olexale/random_user.svg?branch=master)](https://travis-ci.org/olexale/random_user) [![Coverage Status](https://coveralls.io/repos/github/olexale/random_user/badge.svg?branch=master)](https://coveralls.io/github/olexale/random_user?branch=master)
+# random_user  [![Build Status](https://travis-ci.org/olexale/random_user.svg?branch=master)](https://travis-ci.org/olexale/random_user) [![Coverage Status](https://coveralls.io/repos/github/olexale/random_user/badge.svg?branch=master)](https://coveralls.io/github/olexale/random_user?branch=master) [![pub package](https://img.shields.io/pub/v/random_user.svg)](https://pub.dartlang.org/packages/random_user)
 
 Framework to Generate Random Users - An Unofficial Dart/Flutter SDK for https://randomuser.me
 
