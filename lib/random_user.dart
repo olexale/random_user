@@ -6,10 +6,10 @@ import 'package:http/http.dart' as http;
 import 'package:random_user/models.dart';
 
 /// Client for the randomuser.me service - a free and easy to use service to generate random user data for application testing.
-/// 
+///
 /// Use [getUser] for a randomly generated user.
 /// You may call [getUsers] to get a list of random users, or [getUsersWithInfo] to have additional [Info] structure with the response.
-/// 
+///
 /// Code sample:
 /// ```dart
 /// final api = RandomUser();
@@ -17,9 +17,8 @@ import 'package:random_user/models.dart';
 /// final users = api.getUsers();
 /// ```
 class RandomUser {
-
   /// Returns a randomly generated user.
-  /// 
+  ///
   /// Parameters:
   /// [seed] allow you to always generate the same set of users.
   /// [gender] specifies whether you would like to have males or females only. Might be "male" or "female", any other value will cause the service to return both male and female users.
@@ -39,7 +38,7 @@ class RandomUser {
   }
 
   /// Returns a list of randomly generated users.
-  /// 
+  ///
   /// Parameters:
   /// [results] is a number of generates users in one request (up to 5,000)
   /// [page] You can request multiple pages of a seed with the page parameter. Make sure that you use the same seed and page number (1 based index) in order to get back the same results.
@@ -65,7 +64,7 @@ class RandomUser {
   }
 
   /// Returns a list of randomly generated users with additional [Info] structure.
-  /// 
+  ///
   /// Parameters:
   /// [results] is a number of generates users in one request (up to 5,000)
   /// [page] You can request multiple pages of a seed with the page parameter. Make sure that you use the same seed and page number (1 based index) in order to get back the same results.

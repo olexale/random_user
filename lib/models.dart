@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
 
 /// Contains a list of users from randomuser.me service.
-/// 
+///
 /// [results] is a list of users
 /// [info] has additional info, which might be useful for pagination
 @immutable
