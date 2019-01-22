@@ -1,14 +1,15 @@
 name: random_user
 description: Framework to Generate Random Users - An Unofficial Flutter SDK for randomuser.me
 version: 0.0.1
-author: Oleksandr Leuschenko (olexa.le@gmail.com)
-homepage:
+author: Oleksandr Leuschenko <olexa.le@gmail.com>
+homepage: https://github.com/olexale/random_user/
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
   http: ^0.12.0+1
+  meta: ^1.1.7
 
 dev_dependencies:
   test: '>=0.12.42 <2.0.0'
