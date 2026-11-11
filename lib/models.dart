@@ -119,6 +119,7 @@ class Location {
     required this.street,
     required this.city,
     required this.state,
+    required this.country,
     required this.postcode,
     required this.coordinates,
     required this.timezone,
@@ -126,22 +127,26 @@ class Location {
 
   /// Parses a location from JSON.
   Location.fromJson(Map<String, dynamic> json)
-      : street = json['street'] as String,
+      : street = Street.fromJson(json['street'] as Map<String, dynamic>),
         city = json['city'] as String,
         state = json['state'] as String,
+        country = json['country'] as String,
         postcode = json['postcode'].toString(),
         coordinates =
             Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
         timezone = Timezone.fromJson(json['timezone'] as Map<String, dynamic>);
 
   /// Street address.
-  final String street;
+  final Street street;
 
   /// City.
   final String city;
 
   /// State.
   final String state;
+
+  /// Country, e.g. `Mexico`.
+  final String country;
 
   /// Postcode. The service returns either a number or a string, so it is
   /// always converted to a string.
@@ -152,6 +157,23 @@ class Location {
 
   /// Timezone.
   final Timezone timezone;
+}
+
+/// Street address.
+class Street {
+  /// Creates a street address.
+  const Street({required this.number, required this.name});
+
+  /// Parses a street address from JSON.
+  Street.fromJson(Map<String, dynamic> json)
+      : number = json['number'] as int,
+        name = json['name'] as String;
+
+  /// Building number.
+  final int number;
+
+  /// Street name.
+  final String name;
 }
 
 /// Geographic coordinates.

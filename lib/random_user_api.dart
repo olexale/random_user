@@ -87,7 +87,7 @@ class RandomUser {
     String? password,
     String? nationalities,
   }) async {
-    final uri = Uri.https('randomuser.me', '/api/1.2/', {
+    final uri = Uri.https('randomuser.me', '/api/1.4/', {
       if (results != null) 'results': '$results',
       if (password != null) 'password': password,
       if (seed != null) 'seed': seed,

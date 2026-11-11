@@ -5,6 +5,8 @@
 * **Breaking:** migrate to null safety; requires Dart 3.4 or later.
 * **Breaking:** model constructors now take `required` named parameters.
 * **Breaking:** `Id.value` is now `String?`, since the service returns `null` for some nationalities.
+* **Breaking:** switch to randomuser.me API v1.4. `Location.street` is now a `Street` object with `number` and `name`.
+* Add `Location.country`.
 * Upgrade `http` to 1.x.
 * `RandomUser` accepts an optional `http.Client`, e.g. for mocking in tests.
 * `RandomUserException` exposes `statusCode` and handles non-JSON error responses.

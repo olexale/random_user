@@ -40,7 +40,7 @@ void main() {
       );
       final uri = requests.single;
       expect(uri.host, 'randomuser.me');
-      expect(uri.path, '/api/1.2/');
+      expect(uri.path, '/api/1.4/');
       expect(uri.queryParameters, {
         'results': '2',
         'page': '3',
@@ -63,13 +63,16 @@ void main() {
       expect(response.info.seed, 'flutter');
       expect(response.info.results, 2);
       expect(response.info.page, 1);
-      expect(response.info.version, '1.2');
+      expect(response.info.version, '1.4');
 
       expect(response.results, hasLength(2));
       final user = response.results.first;
       expect(user.login.username, 'crazygorilla429');
-      expect(user.name.first, 'eleanor');
+      expect(user.name.first, 'Eleanor');
       expect(user.location.postcode, '88521');
+      expect(user.location.street.number, 2851);
+      expect(user.location.street.name, 'Cherry St');
+      expect(user.location.country, 'United States');
       expect(user.location.coordinates.latitude, isA<String>());
       expect(user.dob.age, isA<int>());
       expect(user.id.value, '802-78-7239');
@@ -148,6 +151,7 @@ void main() {
       expect(response.results, hasLength(2));
       expect(response.info.results, 2);
       expect(response.info.page, 3);
+      expect(response.info.version, '1.4');
     });
   });
 }
