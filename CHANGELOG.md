@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+* Expand README: parameters, user fields, pagination, nationalities, error handling and testing.
+* Improve the package description.
+
 ## 1.0.0
 
 * **Breaking:** migrate to null safety; requires Dart 3.4 or later.

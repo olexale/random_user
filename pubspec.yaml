@@ -1,6 +1,6 @@
 name: random_user
 description: An unofficial Dart/Flutter SDK for randomuser.me. Generates random users with names, addresses, logins, photos and more for testing and prototyping.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/olexale/random_user
 repository: https://github.com/olexale/random_user
 issue_tracker: https://github.com/olexale/random_user/issues
