@@ -1,15 +1,21 @@
 name: random_user
-description: Framework to Generate Random Users - An Unofficial Dart/Flutter SDK for randomuser.me
-version: 0.3.0
-author: Oleksandr Leuschenko <olexa.le@gmail.com>
-homepage: https://github.com/olexale/random_user/
+description: Framework to generate random users. An unofficial Dart/Flutter SDK for randomuser.me.
+version: 1.0.0
+homepage: https://github.com/olexale/random_user
+repository: https://github.com/olexale/random_user
+issue_tracker: https://github.com/olexale/random_user/issues
+topics:
+  - api
+  - testing
+  - mock
+  - fake-data
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.4.0
 
 dependencies:
-  http: ^0.12.0+1
+  http: ^1.2.0
 
 dev_dependencies:
-  test: '>=0.12.42 <2.0.0'
-  test_coverage: ^0.2.0
+  test: ^1.25.0
+  very_good_analysis: ^11.0.0

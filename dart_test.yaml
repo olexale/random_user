@@ -1,0 +1,4 @@
+tags:
+  live:
+    # Tests hitting the real randomuser.me service. Skip them with `-x live`.
+    timeout: 30s

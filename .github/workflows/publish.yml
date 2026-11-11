@@ -1,0 +1,14 @@
+# Publishes to pub.dev when a tag like v1.2.3 is pushed.
+# Requires enabling automated publishing from GitHub Actions in the
+# package's admin page on pub.dev (tag pattern: v{{version}}).
+name: Publish
+
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+*']
+
+jobs:
+  publish:
+    permissions:
+      id-token: write
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1

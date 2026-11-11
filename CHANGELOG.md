@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.0
+
+* **Breaking:** migrate to null safety; requires Dart 3.4 or later.
+* **Breaking:** model constructors now take `required` named parameters.
+* **Breaking:** `Id.value` is now `String?`, since the service returns `null` for some nationalities.
+* Upgrade `http` to 1.x.
+* `RandomUser` accepts an optional `http.Client`, e.g. for mocking in tests.
+* `RandomUserException` exposes `statusCode` and handles non-JSON error responses.
+* Replace Travis CI with GitHub Actions.
+
 ## 0.3.0
 
 * Reformat code

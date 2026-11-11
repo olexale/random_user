@@ -1,114 +1,128 @@
-library random_user;
-
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:random_user/models.dart';
 
-/// Client for the randomuser.me service - a free and easy to use service to generate random user data for application testing.
+/// Client for the randomuser.me service, a free and easy to use service to
+/// generate random user data for application testing.
 ///
 /// Use [getUser] for a randomly generated user.
-/// You may call [getUsers] to get a list of random users, or [getUsersWithInfo] to have additional [Info] structure with the response.
+/// You may call [getUsers] to get a list of random users, or
+/// [getUsersWithInfo] to have additional [Info] structure with the response.
 ///
-/// Code sample:
 /// ```dart
 /// final api = RandomUser();
-/// final user = api.getUser();
-/// final users = api.getUsers();
+/// final user = await api.getUser();
+/// final users = await api.getUsers(results: 10);
 /// ```
+///
+/// Parameters shared by all methods:
+/// - `seed` allows you to always generate the same set of users.
+/// - `gender` might be `male` or `female`; any other value makes the service
+///   return both.
+/// - `password` sets password generation rules, e.g.
+///   `upper,lower,number,8`. See https://randomuser.me/documentation.
+///   By default, passwords are chosen from a list of ~10k top used passwords.
+/// - `nationalities` is a comma-separated list of nationality codes, e.g.
+///   `NO` or `US,GB`. See https://randomuser.me/documentation.
 class RandomUser {
-  /// Returns a randomly generated user.
+  /// Creates a client.
   ///
-  /// Parameters:
-  /// [seed] allow you to always generate the same set of users.
-  /// [gender] specifies whether you would like to have males or females only. Might be "male" or "female", any other value will cause the service to return both male and female users.
-  /// [password] sets password generation rules. Refer to [documentation](https://randomuser.me/documentation) for details. By default, passwords are chosen randomly from a list of ~10k top used passwords.
-  /// [nationalities] request a different nationality of a random user. Supported values "AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NO, NL, NZ, TR, US". Refer to [documentation](https://randomuser.me/documentation) for details.
-  Future<User> getUser(
-      {String seed,
-      String gender,
-      String password,
-      String nationalities}) async {
+  /// Pass a custom [client] to reuse connections, add middleware, or mock the
+  /// service in tests. The caller is responsible for closing it.
+  RandomUser({http.Client? client}) : _client = client;
+
+  final http.Client? _client;
+
+  /// Returns a randomly generated user.
+  Future<User> getUser({
+    String? seed,
+    String? gender,
+    String? password,
+    String? nationalities,
+  }) async {
     final users = await getUsers(
-        seed: seed,
-        gender: gender,
-        password: password,
-        nationalities: nationalities);
+      seed: seed,
+      gender: gender,
+      password: password,
+      nationalities: nationalities,
+    );
     return users.first;
   }
 
   /// Returns a list of randomly generated users.
   ///
-  /// Parameters:
-  /// [results] is a number of generates users in one request (up to 5,000)
-  /// [page] You can request multiple pages of a seed with the page parameter. Make sure that you use the same seed and page number (1 based index) in order to get back the same results.
-  /// [seed] allow you to always generate the same set of users.
-  /// [gender] specifies whether you would like to have males or females only. Might be "male" or "female", any other value will cause the service to return both male and female users.
-  /// [password] sets password generation rules. Refer to [documentation](https://randomuser.me/documentation) for details. By default, passwords are chosen randomly from a list of ~10k top used passwords.
-  /// [nationalities] request a different nationality of a random user. Supported values "AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NO, NL, NZ, TR, US". Refer to [documentation](https://randomuser.me/documentation) for details.
-  Future<List<User>> getUsers(
-      {int results,
-      int page,
-      String seed,
-      String gender,
-      String password,
-      String nationalities}) async {
-    final info = await getUsersWithInfo(
-        results: results,
-        page: page,
-        seed: seed,
-        gender: gender,
-        nationalities: nationalities,
-        password: password);
-    return info.results;
+  /// [results] is the number of users per request (up to 5,000).
+  /// [page] is a 1-based page number. Use it with the same `seed` to get back
+  /// the same results.
+  Future<List<User>> getUsers({
+    int? results,
+    int? page,
+    String? seed,
+    String? gender,
+    String? password,
+    String? nationalities,
+  }) async {
+    final response = await getUsersWithInfo(
+      results: results,
+      page: page,
+      seed: seed,
+      gender: gender,
+      password: password,
+      nationalities: nationalities,
+    );
+    return response.results;
   }
 
-  /// Returns a list of randomly generated users with additional [Info] structure.
+  /// Returns a list of randomly generated users with additional [Info].
   ///
-  /// Parameters:
-  /// [results] is a number of generates users in one request (up to 5,000)
-  /// [page] You can request multiple pages of a seed with the page parameter. Make sure that you use the same seed and page number (1 based index) in order to get back the same results.
-  /// [seed] allow you to always generate the same set of users.
-  /// [gender] specifies whether you would like to have males or females only. Might be "male" or "female", any other value will cause the service to return both male and female users.
-  /// [password] sets password generation rules. Refer to [documentation](https://randomuser.me/documentation) for details. By default, passwords are chosen randomly from a list of ~10k top used passwords.
-  /// [nationalities] request a different nationality of a random user. Supported values "AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NO, NL, NZ, TR, US". Refer to [documentation](https://randomuser.me/documentation) for details.
-  Future<RandomUserResponse> getUsersWithInfo(
-      {int results,
-      int page,
-      String seed,
-      String gender,
-      String password,
-      String nationalities}) async {
-    final queryParameters = Map.fromEntries(_buildQueryParams(
-        results: results,
-        password: password,
-        page: page,
-        seed: seed,
-        gender: gender,
-        nationalities: nationalities));
-    final uri = Uri.https('randomuser.me', '/api/1.2/', queryParameters);
+  /// See [getUsers] for [results] and [page].
+  ///
+  /// Throws [RandomUserException] if the service returns an error.
+  Future<RandomUserResponse> getUsersWithInfo({
+    int? results,
+    int? page,
+    String? seed,
+    String? gender,
+    String? password,
+    String? nationalities,
+  }) async {
+    final uri = Uri.https('randomuser.me', '/api/1.2/', {
+      if (results != null) 'results': '$results',
+      if (password != null) 'password': password,
+      if (seed != null) 'seed': seed,
+      if (nationalities != null) 'nat': nationalities,
+      if (page != null) 'page': '$page',
+      if (gender != null) 'gender': gender,
+    });
 
-    final response = await http.get(uri);
-    final responseJson = json.decode(response.body);
+    final client = _client;
+    final response = await (client == null ? http.get(uri) : client.get(uri));
 
-    if (response.statusCode == 200)
-      return RandomUserResponse.fromJson(responseJson);
+    if (response.statusCode == 200) {
+      return RandomUserResponse.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      );
+    }
 
-    throw RandomUserException.fromJson(responseJson);
+    throw _parseError(response);
   }
 
-  Iterable<MapEntry<String, String>> _buildQueryParams(
-      {int results,
-      int page,
-      String seed,
-      String gender,
-      String password,
-      String nationalities}) sync* {
-    if (results != null) yield MapEntry('results', results.toString());
-    if (password != null) yield MapEntry('password', password);
-    if (seed != null) yield MapEntry('seed', seed);
-    if (nationalities != null) yield MapEntry('nat', nationalities);
-    if (page != null) yield MapEntry('page', page.toString());
-    if (gender != null) yield MapEntry('gender', gender.toString());
+  RandomUserException _parseError(http.Response response) {
+    try {
+      final body = json.decode(response.body);
+      if (body is Map<String, dynamic>) {
+        return RandomUserException.fromJson(
+          body,
+          statusCode: response.statusCode,
+        );
+      }
+    } on FormatException {
+      // Not JSON, e.g. an HTML error page from a proxy.
+    }
+    return RandomUserException(
+      error: response.reasonPhrase ?? 'HTTP ${response.statusCode}',
+      statusCode: response.statusCode,
+    );
   }
 }

@@ -1,0 +1,114 @@
+{
+    "results": [
+        {
+            "gender": "female",
+            "name": {
+                "title": "mrs",
+                "first": "eleanor",
+                "last": "caldwell"
+            },
+            "location": {
+                "street": "2851 cherry st",
+                "city": "el paso",
+                "state": "illinois",
+                "postcode": 88521,
+                "coordinates": {
+                    "latitude": "27.2875",
+                    "longitude": "45.1138"
+                },
+                "timezone": {
+                    "offset": "+4:00",
+                    "description": "Abu Dhabi, Muscat, Baku, Tbilisi"
+                }
+            },
+            "email": "eleanor.caldwell@example.com",
+            "login": {
+                "uuid": "418a4143-d0ae-41d4-9da4-650f9f59644a",
+                "username": "crazygorilla429",
+                "password": "ohyeah",
+                "salt": "aO4gZpt1",
+                "md5": "83ba0813c4f1632b42df076af0700ace",
+                "sha1": "0abe1ca1d900f3c43c1bf7f44952e07b329b8442",
+                "sha256": "9cbe89ffed89a10eabba2b671621624a0ac4c46fed834d694d89205aa76819d1"
+            },
+            "dob": {
+                "date": "1946-03-17T16:18:45Z",
+                "age": 80
+            },
+            "registered": {
+                "date": "2017-12-09T12:27:02Z",
+                "age": 8
+            },
+            "phone": "(935)-422-6351",
+            "cell": "(863)-162-7353",
+            "id": {
+                "name": "SSN",
+                "value": "802-78-7239"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/59.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/59.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/59.jpg"
+            },
+            "nat": "US"
+        },
+        {
+            "gender": "male",
+            "name": {
+                "title": "mr",
+                "first": "floyd",
+                "last": "nguyen"
+            },
+            "location": {
+                "street": "7085 e north st",
+                "city": "sioux falls",
+                "state": "alaska",
+                "postcode": 16770,
+                "coordinates": {
+                    "latitude": "-26.1001",
+                    "longitude": "20.1584"
+                },
+                "timezone": {
+                    "offset": "-11:00",
+                    "description": "Midway Island, Samoa"
+                }
+            },
+            "email": "floyd.nguyen@example.com",
+            "login": {
+                "uuid": "1db5194c-495d-413c-8b35-f315a1b3d010",
+                "username": "happyzebra656",
+                "password": "151515",
+                "salt": "bfwZVIHe",
+                "md5": "4de8b9af31815a4fdedd8446ddfbecec",
+                "sha1": "fd98b7aa2e95597abb8385f7305810d72fe70122",
+                "sha256": "754abb1f88487df66ee95b37024e62e9d7e57acc0c4e7183e9f0fb20aac60f63"
+            },
+            "dob": {
+                "date": "1953-05-01T10:57:05Z",
+                "age": 73
+            },
+            "registered": {
+                "date": "2002-10-21T17:59:03Z",
+                "age": 24
+            },
+            "phone": "(751)-472-2384",
+            "cell": "(720)-394-3310",
+            "id": {
+                "name": "SSN",
+                "value": "911-33-9631"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/43.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/43.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/43.jpg"
+            },
+            "nat": "US"
+        }
+    ],
+    "info": {
+        "seed": "flutter",
+        "results": 2,
+        "page": 1,
+        "version": "1.2"
+    }
+}
