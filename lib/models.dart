@@ -183,14 +183,21 @@ class Coordinates {
 
   /// Parses coordinates from JSON.
   Coordinates.fromJson(Map<String, dynamic> json)
-      : latitude = json['latitude'] as String,
-        longitude = json['longitude'] as String;
+      : latitude = _parseDouble(json['latitude']),
+        longitude = _parseDouble(json['longitude']);
 
-  /// Latitude.
-  final String latitude;
+  /// Latitude in degrees.
+  final double latitude;
 
-  /// Longitude.
-  final String longitude;
+  /// Longitude in degrees.
+  final double longitude;
+
+  // The service sends coordinates as strings, e.g. "27.2875".
+  static double _parseDouble(Object? value) => switch (value) {
+        final num n => n.toDouble(),
+        final String s => double.parse(s),
+        _ => throw FormatException('Expected a coordinate, got $value'),
+      };
 }
 
 /// Timezone.
@@ -262,11 +269,11 @@ class Dob {
 
   /// Parses a date of birth from JSON.
   Dob.fromJson(Map<String, dynamic> json)
-      : date = json['date'] as String,
+      : date = DateTime.parse(json['date'] as String),
         age = json['age'] as int;
 
-  /// ISO 8601 date, e.g. `1946-03-17T16:18:45Z`.
-  final String date;
+  /// Date of birth, in UTC.
+  final DateTime date;
 
   /// Age in years.
   final int age;
@@ -279,11 +286,11 @@ class Registered {
 
   /// Parses a registration date from JSON.
   Registered.fromJson(Map<String, dynamic> json)
-      : date = json['date'] as String,
+      : date = DateTime.parse(json['date'] as String),
         age = json['age'] as int;
 
-  /// ISO 8601 date, e.g. `2017-12-09T12:27:02Z`.
-  final String date;
+  /// Registration date, in UTC.
+  final DateTime date;
 
   /// Years since registration.
   final int age;

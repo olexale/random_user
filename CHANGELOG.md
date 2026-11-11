@@ -6,6 +6,8 @@
 * **Breaking:** model constructors now take `required` named parameters.
 * **Breaking:** `Id.value` is now `String?`, since the service returns `null` for some nationalities.
 * **Breaking:** switch to randomuser.me API v1.4. `Location.street` is now a `Street` object with `number` and `name`.
+* **Breaking:** `Dob.date` and `Registered.date` are now UTC `DateTime` values instead of ISO 8601 strings.
+* **Breaking:** `Coordinates.latitude` and `Coordinates.longitude` are now `double` instead of `String`.
 * Add `Location.country`.
 * Upgrade `http` to 1.x.
 * `RandomUser` accepts an optional `http.Client`, e.g. for mocking in tests.

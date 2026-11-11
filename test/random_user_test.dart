@@ -73,8 +73,12 @@ void main() {
       expect(user.location.street.number, 2851);
       expect(user.location.street.name, 'Cherry St');
       expect(user.location.country, 'United States');
-      expect(user.location.coordinates.latitude, isA<String>());
-      expect(user.dob.age, isA<int>());
+      expect(user.location.coordinates.latitude, 27.2875);
+      expect(user.location.coordinates.longitude, 45.1138);
+      expect(user.dob.date, DateTime.utc(1946, 4, 29, 7, 2, 4, 12));
+      expect(user.dob.date.isUtc, isTrue);
+      expect(user.dob.age, 80);
+      expect(user.registered.date, DateTime.utc(2021, 9, 29, 18, 21, 58, 721));
       expect(user.id.value, '802-78-7239');
       expect(user.nat, 'US');
     });
@@ -91,6 +95,21 @@ void main() {
       expect(parsed.id.name, '');
       expect(parsed.id.value, isNull);
       expect(parsed.location.postcode, 'K1A 0B1');
+    });
+
+    test('accepts numeric coordinates', () async {
+      final body = jsonDecode(fixture) as Map<String, dynamic>;
+      final user =
+          (body['results'] as List<dynamic>).first as Map<String, dynamic>;
+      (user['location'] as Map<String, dynamic>)['coordinates'] = {
+        'latitude': -33.5,
+        'longitude': 151,
+      };
+
+      final api = apiReturning(jsonEncode(body));
+      final coordinates = (await api.getUser()).location.coordinates;
+      expect(coordinates.latitude, -33.5);
+      expect(coordinates.longitude, 151.0);
     });
 
     test('throws RandomUserException with service error', () async {
