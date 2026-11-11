@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  schedule:
+    # Weekly run of the live tests to notice randomuser.me API changes.
+    - cron: '0 6 * * 1'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk: [stable]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.sdk }}
+      - run: dart pub get
+      - run: dart format --output=none --set-exit-if-changed .
+        if: matrix.sdk == 'stable'
+      - run: dart analyze --fatal-infos
+        if: matrix.sdk == 'stable'
+      - run: dart test -x live
+      - run: dart test -t live
+        if: matrix.sdk == 'stable'

@@ -1,0 +1,122 @@
+{
+    "results": [
+        {
+            "gender": "female",
+            "name": {
+                "title": "Mrs",
+                "first": "Eleanor",
+                "last": "Caldwell"
+            },
+            "location": {
+                "street": {
+                    "number": 2851,
+                    "name": "Cherry St"
+                },
+                "city": "El Paso",
+                "state": "Illinois",
+                "country": "United States",
+                "postcode": 88521,
+                "coordinates": {
+                    "latitude": "27.2875",
+                    "longitude": "45.1138"
+                },
+                "timezone": {
+                    "offset": "+4:00",
+                    "description": "Abu Dhabi, Muscat, Baku, Tbilisi"
+                }
+            },
+            "email": "eleanor.caldwell@example.com",
+            "login": {
+                "uuid": "418a4143-d0ae-41d4-9da4-650f9f59644a",
+                "username": "crazygorilla429",
+                "password": "oklahoma",
+                "salt": "aO4gZpt1",
+                "md5": "0214c1f8b6a280017663b911ab3dae27",
+                "sha1": "e530409a60d8be01cefa997ccc34df7f1e6e8c29",
+                "sha256": "189f95d882249a2085242f67f5c7d7d0e86b6744f04366544f44e9d66f5b6d94"
+            },
+            "dob": {
+                "date": "1946-04-29T07:02:04.012Z",
+                "age": 80
+            },
+            "registered": {
+                "date": "2021-09-29T18:21:58.721Z",
+                "age": 5
+            },
+            "phone": "(935) 522-6351",
+            "cell": "(863) 262-7353",
+            "id": {
+                "name": "SSN",
+                "value": "802-78-7239"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/59.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/59.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/59.jpg"
+            },
+            "nat": "US"
+        },
+        {
+            "gender": "male",
+            "name": {
+                "title": "Mr",
+                "first": "Floyd",
+                "last": "Nguyen"
+            },
+            "location": {
+                "street": {
+                    "number": 7085,
+                    "name": "E North St"
+                },
+                "city": "South Bend",
+                "state": "Alaska",
+                "country": "United States",
+                "postcode": 16770,
+                "coordinates": {
+                    "latitude": "-26.1001",
+                    "longitude": "20.1584"
+                },
+                "timezone": {
+                    "offset": "-11:00",
+                    "description": "Midway Island, Samoa"
+                }
+            },
+            "email": "floyd.nguyen@example.com",
+            "login": {
+                "uuid": "1db5194c-495d-413c-8b35-f315a1b3d010",
+                "username": "happyzebra656",
+                "password": "147258",
+                "salt": "bfwZVIHe",
+                "md5": "a70c0663d1dce2d391361c8a74e99a8d",
+                "sha1": "fea4848bf3fedc5e0409b3371cc049d73e6a998d",
+                "sha256": "4db9bd9a5346b3faddfd223b94c04998d6ec8ed5cb2a17b6dcba12a3090cdbef"
+            },
+            "dob": {
+                "date": "1953-12-23T16:03:36.034Z",
+                "age": 72
+            },
+            "registered": {
+                "date": "2002-12-12T22:24:26.537Z",
+                "age": 23
+            },
+            "phone": "(851) 572-2384",
+            "cell": "(820) 494-3310",
+            "id": {
+                "name": "SSN",
+                "value": "852-85-7287"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/43.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/43.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/43.jpg"
+            },
+            "nat": "US"
+        }
+    ],
+    "info": {
+        "seed": "flutter",
+        "results": 2,
+        "page": 1,
+        "version": "1.4"
+    }
+}
